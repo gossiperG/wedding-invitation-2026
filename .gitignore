@@ -6,4 +6,6 @@ tools/NotoSerifSC.ttf
 tools/used_chars.txt
 # 婚礼纪物料包本地使用，不进 git
 materials/
+tools/user_root/
+tools/user_root_clone/
 
