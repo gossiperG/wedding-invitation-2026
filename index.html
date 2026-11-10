@@ -271,14 +271,14 @@ section { position: relative; }
   <div class="section-title reveal">影 <span class="zh-char">·</span> 集</div>
   <div class="rule reveal" style="--d:.1s"><i></i><span>囍</span><i></i></div>
   <div class="grid">
-    <figure class="reveal"><img src="assets/img/gal_01.webp" alt="秀禾服合影" loading="lazy" /></figure>
-    <figure class="reveal" style="--d:.12s"><img src="assets/img/gal_02.webp" alt="海边合影" loading="lazy" /></figure>
-    <figure class="reveal" style="--d:.2s"><img src="assets/img/gal_05.webp" alt="灯笼前合影" loading="lazy" /></figure>
-    <figure class="reveal" style="--d:.28s"><img src="assets/img/gal_03.webp" alt="金色午光" loading="lazy" /></figure>
-    <figure class="reveal"><img src="assets/img/gal_04.webp" alt="光影对望" loading="lazy" /></figure>
-    <figure class="reveal" style="--d:.12s"><img src="assets/img/gal_06.webp" alt="喜字灯笼" loading="lazy" /></figure>
-    <figure class="reveal" style="--d:.2s"><img src="assets/img/gal_07.webp" alt="花园拱门" loading="lazy" /></figure>
-    <figure class="wide reveal" style="--d:.28s"><img src="assets/img/gal_08.webp" alt="草坪大裙摆" loading="lazy" /></figure>
+    <figure class="reveal"><img src="assets/img/gal_01.webp" data-full="assets/img/gal_01_full.webp" alt="秀禾服合影" loading="lazy" /></figure>
+    <figure class="reveal" style="--d:.12s"><img src="assets/img/gal_02.webp" data-full="assets/img/gal_02_full.webp" alt="海边合影" loading="lazy" /></figure>
+    <figure class="reveal" style="--d:.2s"><img src="assets/img/gal_05.webp" data-full="assets/img/gal_05_full.webp" alt="灯笼前合影" loading="lazy" /></figure>
+    <figure class="reveal" style="--d:.28s"><img src="assets/img/gal_03.webp" data-full="assets/img/gal_03_full.webp" alt="金色午光" loading="lazy" /></figure>
+    <figure class="reveal"><img src="assets/img/gal_04.webp" data-full="assets/img/gal_04_full.webp" alt="光影对望" loading="lazy" /></figure>
+    <figure class="reveal" style="--d:.12s"><img src="assets/img/gal_06.webp" data-full="assets/img/gal_06_full.webp" alt="喜字灯笼" loading="lazy" /></figure>
+    <figure class="reveal" style="--d:.2s"><img src="assets/img/gal_07.webp" data-full="assets/img/gal_07_full.webp" alt="花园拱门" loading="lazy" /></figure>
+    <figure class="wide reveal" style="--d:.28s"><img src="assets/img/gal_08.webp" data-full="assets/img/gal_08_full.webp" alt="草坪大裙摆" loading="lazy" /></figure>
   </div>
 </section>
 
@@ -345,8 +345,16 @@ const lbImg = document.getElementById("lb-img");
 let lbIdx = 0;
 function openLb(i) {
   lbIdx = (i + galleryImgs.length) % galleryImgs.length;
-  lbImg.src = galleryImgs[lbIdx].src;
+  const target = galleryImgs[lbIdx];
+  const want = lbIdx;
+  lbImg.src = target.src;         /* 先显示小图（瞬时） */
   lb.classList.add("show");
+  const full = target.dataset.full;
+  if (full) {                     /* 大图按需加载，加载完成后才替换（切走了就不替换） */
+    const hi = new Image();
+    hi.onload = () => { if (lbIdx === want) lbImg.src = hi.src; };
+    hi.src = full;
+  }
 }
 galleryImgs.forEach((img, i) => img.closest("figure").addEventListener("click", () => openLb(i)));
 document.querySelector(".lb-close").addEventListener("click", () => lb.classList.remove("show"));
