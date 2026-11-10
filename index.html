@@ -6,7 +6,20 @@
 <title>黄少娴 & 赵超杰 · 婚礼请柬 | 2026.11.14 珠海</title>
 <meta name="description" content="黄少娴与赵超杰谨定于2026年11月14日（农历十月初六）中午十二时，在珠海梅华海鲜城(君怡酒店)举行婚宴，敬备喜筵，恭候光临。" />
 <!-- 微信分享卡片会取 title 与第一张图；转发前可用"微信开发者工具-分享"再复核 -->
+<link rel="preload" href="assets/fonts/noto-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/noto-400.woff2" as="font" type="font/woff2" crossorigin />
 <style>
+/* 子集化思源宋体（只含本页字符 · OFL 开源授权，可任意使用不掉Privacy风险） */
+@font-face {
+  font-family: "Noto Serif SC Sub";
+  src: url("assets/fonts/noto-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Noto Serif SC Sub";
+  src: url("assets/fonts/noto-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
 :root {
   --paper: #f7f2ea;      /* 宣纸米白 */
   --paper-deep: #efe7da; /* 深一度宣纸 */
@@ -19,7 +32,7 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body {
-  font-family: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-family: "Noto Serif SC Sub", "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif;
   background: var(--paper);
   color: var(--ink);
   line-height: 1.7;
