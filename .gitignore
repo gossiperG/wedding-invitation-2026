@@ -4,3 +4,6 @@ tools/noto400.woff2
 tools/noto600.woff2
 tools/NotoSerifSC.ttf
 tools/used_chars.txt
+# 婚礼纪物料包本地使用，不进 git
+materials/
+
