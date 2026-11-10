@@ -1,0 +1,6 @@
+# 本地生成中间文件，不入库（成品字体与图片在 assets/ 内正常提交）
+*.tgz
+tools/noto400.woff2
+tools/noto600.woff2
+tools/NotoSerifSC.ttf
+tools/used_chars.txt
