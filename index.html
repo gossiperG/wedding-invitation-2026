@@ -193,6 +193,9 @@ section { position: relative; }
   .reveal { opacity: 1; transform: none; transition: none; }
   #cover .char { animation: none; opacity: 1; transform: none; }
 }
+/* ?flat=1 无动画模式：同样解锁逐字与进场态 */
+[data-flat="1"] .reveal { opacity: 1; transform: none; transition: none; }
+[data-flat="1"] #cover .char { animation: none; opacity: 1; transform: none; }
 #btn-tour {
   position: fixed; left: 1rem; bottom: 1.2rem; z-index: 50;
   width: 2.85rem; height: 2.85rem; border-radius: 50%;
@@ -416,6 +419,7 @@ document.querySelectorAll("[data-chars]").forEach((el, gi) => {
 
 /* 滚动进场 */
 if (motionOff) {
+  document.documentElement.dataset.flat = "1";
   document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 } else {
   const io = new IntersectionObserver((entries) => {
